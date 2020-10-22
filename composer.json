@@ -1,0 +1,7 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "telegram-bot/api": "^2.3",
+        "mvs/phbot": "^1.0"
+    }
+}
