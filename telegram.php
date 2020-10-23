@@ -26,29 +26,41 @@ $app = new \PhBotLib\Api\ApiConnectTelegram([
     }
     */
 
-    //$request = $app->getUpdates();
+    $request = $app->getUpdates();
     //$obj = json_decode($request);
 
+    $xml = json_decode(json_encode($request),true);
 
-    //$response = json_decode(json_encode($request), true);
-
-    //$length = count($response["result"]);
+    $length = count($xml);
 
     //obtém a última atualização recebida pelo bot
-    //$update = $response["result"][$length-1];
+    $update = $xml[$length-1]['message']['text'];
 
-    //echo $update['message']['text'];
+    //echo $update;
+    if($update === 'oi'){
+        $data = [
+            'chat_id' => 1166641089,
+            'text'    => 'Olá, meu nome é bot!'
+        ];
+        $app->sendMessage($data);
+    }else{
+        $data = [
+            'chat_id' => 1166641089,
+            'text'    => 'Não Entendi, pode repetir?'
+        ];
+        $app->sendMessage($data);
 
-    $request = $app->getUpdates();
+    }
+    //$request = $app->getUpdates();
     //var_dump($request['0']['result']['']);
     //var_dump($request);
-    $xml = json_decode(json_encode($request),true);
+    //$xml = json_decode(json_encode($request),true);
     //echo $xml[0]['update_id'];
     /*foreach($xml['message']['text'] as $text){
         echo $text;
     }
     */
-
+    /*
     $updates = getUpdateOffset();
 
         if($updates) {
@@ -74,7 +86,7 @@ $app = new \PhBotLib\Api\ApiConnectTelegram([
         }
 
 
-
+        */
     /*
     
     echo $xml[3]['message']['text'];
