@@ -2,6 +2,14 @@
 
 require __DIR__ . "/vendor/autoload.php";
 
+//Add at the top this in your code Unlimited execution time
+
+ini_set('max_execution_time', 0);
+
+//Also, you can add unlimited memory usage
+
+ini_set("memory_limit", "-1");
+
 $app = new \PhBotLib\Api\ApiConnectTelegram([
     'token' => '1319527547:AAH3hLsu7SwanQl6SWdYkRhaKTeYwJ_YG8Y'
 ]);
@@ -31,7 +39,7 @@ $app = new \PhBotLib\Api\ApiConnectTelegram([
                     $data = [
                         'chat_id' => 1166641089,
                         'parse_mode' => 'HTML',
-                        'text'    => "Olá, meu nome é <b>bot!</b>"
+                        'text'    => "Olá, meu nome é bot!"
                         //'text'    => "Olá, meu nome é <b>bot</b>\nEscolha uma opção:\n1- teste 1\n2 - teste 2"
                         
                     ];
@@ -86,10 +94,50 @@ $app = new \PhBotLib\Api\ApiConnectTelegram([
                 case "ESTOU COM FOME!":
                     $data = [
                         'chat_id' => 1166641089,
-                        'text'    => 'Você é casado, come sua mulher! kkkkk'
+                        'text'    => 'Te vira vagabundo! kkk'
                     ];
                     $app->sendMessage($data);
                     break;
+                case "REL":
+                        $data = [
+                            'chat_id' => 1166641089,
+                            'parse_mode' => 'HTML',
+                            'text'    => 'Relatório de entrada toneladas por frente
+                            26/10/2020
+                            ================
+                            Frente 1 
+                            Qt cana :208.04 ton
+                            TMP: 56.60 
+                            ATR : 119.89
+                            ================
+                            ================
+                            Frente 2 
+                            Qt cana :501.42 ton
+                            TMP: 57.07 
+                            ATR : 124.83
+                            ================
+                            ================
+                            Frente 3 
+                            Qt cana :703.43 ton
+                            TMP: 48.68 
+                            ATR : 131.70
+                            ================
+                            ================
+                            Frente 5 
+                            Qt cana :90.25 ton
+                            ATR : 132.74
+                            ================
+                            ================
+                            Frente 99(Fornec)
+                            Qt cana :69.44 ton
+                            TMP: 70.30 
+                            ATR : 123.15
+                            ================
+                            ================
+                            Total TC : 1573 ton'
+                        ];
+                        $app->sendMessage($data);
+                        break;
                 default:
                     $data = [
                         'chat_id' => 1166641089,
