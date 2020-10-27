@@ -12,7 +12,11 @@ define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
 //Also, you can add unlimited memory usage
 
+//Ativar webhook
 //https://api.telegram.org/bot1319527547:AAH3hLsu7SwanQl6SWdYkRhaKTeYwJ_YG8Y/setwebhook?url=https://alstwo.com.br/relSJAGRO_bot/telegram.php
+
+//Inativar webhook
+//https://api.telegram.org/bot1319527547:AAH3hLsu7SwanQl6SWdYkRhaKTeYwJ_YG8Y/setwebhook?url=
 
 function getResult($rel, $title){
 
