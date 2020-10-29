@@ -45,26 +45,7 @@ function getResult($rel, $title){
         TMP: 51.39
         ================';
 	}else{
-		$out .= 'Relatório XYZ
-        27/10/2020
-        Frente 1
-        ================
-        PIEDADE: 57.43
-        ATR: 146.57
-        Densidade: 14
-        ================
-        DAGUA: 1004.48
-        ATR: 118.84
-        Densidade: 14
-        ================
-        TAPIPIRÉ: 22.40
-        ATR: 123.54
-        Densidade: 11
-        ================
-        CAMPINAS: 405.02
-        ATR: 132.2
-        Densidade: 16
-        ================';
+		$out .= 'Não existe';
 	}
 
 	return $out;
