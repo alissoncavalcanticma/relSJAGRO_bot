@@ -43,97 +43,6 @@ function getResult($rel, $title){
         BRIX : 17.48
         ATR : 110.79
         TMP: 51.39
-        ================
-        Frente 2
-        
-        POLCANA : 12.81
-        AR : 0.98
-        FIBRA : 15.92
-        PUREZA : 82.98
-        BRIX : 19.56
-        ATR : 127.45
-        TMP: 49.98
-        ================
-        Frente 3
-        
-        POLCANA : 13.32
-        AR : 0.95
-        FIBRA : 15.84
-        PUREZA : 83.58
-        BRIX : 20.07
-        ATR : 132.03
-        TMP: 51.31
-        ================
-        Frente 5
-        
-        POLCANA : 13.65
-        AR : 0.89
-        FIBRA : 16.71
-        PUREZA : 84.52
-        BRIX : 20.45
-        ATR : 134.56
-        ================
-        Frente 6
-        
-        POLCANA : 13.42
-        AR : 1.01
-        FIBRA : 14.84
-        PUREZA : 82.81
-        BRIX : 20.22
-        ATR : 133.49
-        TMP: 9.60
-        ================
-        Frente 99
-        
-        POLCANA : 13.27
-        AR : 1.03
-        FIBRA : 15.81
-        PUREZA : 82.19
-        BRIX : 20.65
-        ATR : 132.09
-        TMP: 60.81
-        ================';
-	}elseif($rel=="RELF"){
-		$out .= 'Relatório por frente
-        27/10/2020
-        Frente 1
-        ================
-        PIEDADE: 57.43
-        ATR: 146.57
-        Densidade: 14
-        ================
-        DAGUA: 1004.48
-        ATR: 118.84
-        Densidade: 14
-        ================
-        TAPIPIRÉ: 22.40
-        ATR: 123.54
-        Densidade: 11
-        ================
-        CAMPINAS: 405.02
-        ATR: 132.2
-        Densidade: 16
-        ================';
-	}elseif($rel=="RELDA"){
-		$out .= 'Relatório de entrada do dia anteior
-        27/10/2020
-        Frente 1
-        ================
-        PIEDADE: 57.43
-        ATR: 146.57
-        Densidade: 14
-        ================
-        DAGUA: 1004.48
-        ATR: 118.84
-        Densidade: 14
-        ================
-        TAPIPIRÉ: 22.40
-        ATR: 123.54
-        Densidade: 11
-        ================
-        CAMPINAS: 405.02
-        ATR: 132.2
-        Densidade: 16
         ================';
 	}else{
 		$out .= 'Relatório XYZ
@@ -171,6 +80,7 @@ function processMessage($message) {
   
       if (strpos($text, "/start") === 0) {
           //envia a mensagem ao usuário
+          //Criar função pra verificar e retornar o ID para a pessoas solicitar o acesso às funções do BOT
         sendMessage("sendMessage", array('chat_id' => $chat_id, "text" => 'Olá, '. $message['from']['first_name'].
           '! Eu sou um bot de relatórios da São José. Para começar, escolha qual Relatório você deseja ver:', 'reply_markup' => array(
           'keyboard' => array(array('Relatório Geral', 'Relatório por frente'),array('Relatório do dia anterior','Relatório XYZ'),array('Relatório 11','Relatório 12')),
@@ -190,21 +100,24 @@ function processMessage($message) {
       sendMessage("sendMessage", array('chat_id' => $chat_id, "text" => 'Desculpe, mas só compreendo mensagens em texto'));
     }
   }
+
+
   function sendMessage($method, $parameters) {
-    $options = array(
-    'http' => array(
-      'method'  => 'POST',
-      'content' => json_encode($parameters),
-      'header'=>  "Content-Type: application/json\r\n" .
-                  "Accept: application/json\r\n"
-      )
-  );
+       
+        $options = array(
+        'http' => array(
+        'method'  => 'POST',
+        'content' => json_encode($parameters),
+        'header'=>  "Content-Type: application/json\r\n" .
+                    "Accept: application/json\r\n"
+        )
+        );
   
-  $context  = stream_context_create( $options );
-  file_get_contents(API_URL.$method, false, $context );
+        $context  = stream_context_create( $options );
+        file_get_contents(API_URL.$method, false, $context );
   }
   
-  $update_response = file_get_contents("php://input");
+    $update_response = file_get_contents("php://input");
 
     $update = json_decode($update_response, true);
 
