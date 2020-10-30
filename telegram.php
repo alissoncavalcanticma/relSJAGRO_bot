@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__ . "/vendor/autoload.php";
-require 'functions.php';
+require 'back/functions.php';
 
 //Add at the top this in your code Unlimited execution time
 
@@ -27,7 +27,7 @@ $update = json_decode($update_response, true);
 if (isset($update["message"])) {
 
     processMessage($update["message"]);
-    
+
 }
 
 
