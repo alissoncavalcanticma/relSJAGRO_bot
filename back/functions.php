@@ -16,7 +16,7 @@ function processMessage($message) {
             
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
-                'text' => 'Olá, '. $message['from']['first_name']. '! Eu sou um bot de relatórios da São José. Para começar, escolha qual Relatório você deseja ver:',
+                'text' => 'Olá, '.$message['from']['first_name'].'! Eu sou um bot de relatórios da São José. Para começar, escolha qual Relatório você deseja ver:',
                 'reply_markup' => array(
                         'keyboard' => array(
                             array(
