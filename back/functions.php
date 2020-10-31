@@ -20,8 +20,8 @@ function processMessage($message) {
                 'reply_markup' => array(
                         'keyboard' => array(
                             array(
-                                '1.ABASTECER',
-                                '2.CONSULffffTAR'
+                                'ABASTECER',
+                                'CONSULffffTAR'
                             )/*,
                             array(
                                 '3. Opção 3',
