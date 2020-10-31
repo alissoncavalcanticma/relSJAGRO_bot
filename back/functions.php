@@ -74,9 +74,9 @@ function sendMessage($method, $parameters) {
 
 function getResult($rel, $title){
 
-        $out = "Resultado - ".$title;
+        $out = "Resposta - ".$title."\r\n";
         
-        if($rel=="RELGER"){
+        if($rel=="CS"){
             $out .= 'Relatório de entrada geral
             26/10/2020
             ================
