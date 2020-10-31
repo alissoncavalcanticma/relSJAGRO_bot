@@ -16,12 +16,12 @@ function processMessage($message) {
             
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
-                'text' => 'Olá, '.$message['from']['first_name'].'! Eu sou um bot de relatórios da São José. Para começar, escolha qual Relatório você deseja ver:',
+                'text' => 'Olá, '.$message['from']['first_name'].'! Eu sou um bot de abastecimento do posto da São José. Para começar, escolha abaixo:',
                 'reply_markup' => array(
                         'keyboard' => array(
                             array(
-                                'ABASTECER',
-                                'CONSULTAR'
+                                '1.ABASTECER',
+                                '2.CONSULTAR'
                             )/*,
                             array(
                                 '3. Opção 3',
@@ -40,12 +40,20 @@ function processMessage($message) {
                 'parse_mode' => 'HTML',
                 'text' => getResult('AB', $text)
             ));
-        }else if ($text === "CONSULTAR") {
-            sendMessage("sendMessage", array(
-                'chat_id' => $chat_id,
-                'parse_mode' => 'HTML',
-                'text' => getResult('CS', $text)
-            ));
+        }else if (substr($text, 0, 1) === "2") {
+            if(substr($text, 0, 3) === "1"){
+                sendMessage("sendMessage", array(
+                    'chat_id' => $chat_id,
+                    'parse_mode' => 'HTML',
+                    'text' => getResult('CS.MAT', $text)
+                ));
+            }else{
+                sendMessage("sendMessage", array(
+                    'chat_id' => $chat_id,
+                    'parse_mode' => 'HTML',
+                    'text' => getResult('CS', $text)
+                ));
+            }
         }else {
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
@@ -77,18 +85,13 @@ function getResult($rel, $title){
         $out = "Resposta - ".$title."\r\n";
         
         if($rel=="CS"){
-            $out .= 'Relatório de entrada geral
-            26/10/2020
-            ================
-            TC Analisada : 5686.41
-            ================
-            TC Entregue : 6908.78
-            ================
-            Porcentagem de TC analisada : 82.31%
-            ================
-            Total de cargas entregues : 459
-            ================
-            ================';
+            $out .= "
+            ================ 
+            Digite a matrícula:
+            ==================";
+        }else if($rel=="CS.MAT"){
+            $out .= "O funcionário XXX, de matrícula xxx.xxx.xxx\r\n
+            ainda tem XX Litros de abastecimento";
         }else{
             $out .= 'Não existe';
         }
