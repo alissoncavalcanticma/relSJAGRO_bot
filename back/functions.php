@@ -21,7 +21,7 @@ function processMessage($message) {
                         'keyboard' => array(
                             array(
                                 '1.ABASTECER',
-                                '2.CONSULTAR'
+                                '2.CONSULffffTAR'
                             )/*,
                             array(
                                 '3. Opção 3',
@@ -40,20 +40,18 @@ function processMessage($message) {
                 'parse_mode' => 'HTML',
                 'text' => getResult('AB', $text)
             ));
-        }else if (substr($text, 0, 1) === "2") {
-            if(substr($text, 0, 3) === "1"){
-                sendMessage("sendMessage", array(
-                    'chat_id' => $chat_id,
-                    'parse_mode' => 'HTML',
-                    'text' => getResult('CS.MAT', $text)
-                ));
-            }else{
+        }else if ($text === "CONSULTAR") {
                 sendMessage("sendMessage", array(
                     'chat_id' => $chat_id,
                     'parse_mode' => 'HTML',
                     'text' => getResult('CS', $text)
                 ));
-            }
+        }else if ($text === "CONSULTAR") {
+            sendMessage("sendMessage", array(
+                'chat_id' => $chat_id,
+                'parse_mode' => 'HTML',
+                'text' => getResult('CS', $text)
+            ));
         }else {
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,

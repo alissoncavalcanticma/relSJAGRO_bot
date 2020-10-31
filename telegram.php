@@ -8,7 +8,7 @@ require 'back/functions.php';
 ini_set('max_execution_time', 0);
 ini_set("memory_limit", "-1");
 
-define('BOT_TOKEN', '1319527547:AAH3hLsu7SwanQl6SWdYkRhaKTeYwJ_YG8Y');
+define('BOT_TOKEN', '1319527547:AAH2yobgbMYLTsKs0o92Ulkq346mOLsOuno');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
 
 //Also, you can add unlimited memory usage
