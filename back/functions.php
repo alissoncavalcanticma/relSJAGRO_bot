@@ -20,31 +20,37 @@ function processMessage($message) {
                 'reply_markup' => array(
                         'keyboard' => array(
                             array(
-                                'Relatório Geral',
-                                'Relatório por frente'
-                            ),
+                                'ABASTECER',
+                                'CONSULTAR'
+                            )/*,
                             array(
-                                'Relatório do dia anterior',
-                                'Relatório XYZ'
+                                '3. Opção 3',
+                                '4. Opção 4'
                             ),
                             array(
                                 'Relatório 11',
                                 'Relatório 12'
-                            )
+                            )*/
                         ),
                 'one_time_keyboard' => true)));
 
-        } else if ($text === "Relatório Geral") {
+        } else if ($text === "ABASTECER") {
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
                 'parse_mode' => 'HTML',
-                'text' => getResult('RELGER', $text)
+                'text' => getResult('AB', $text)
+            ));
+        }else if ($text === "CONSULTAR") {
+            sendMessage("sendMessage", array(
+                'chat_id' => $chat_id,
+                'parse_mode' => 'HTML',
+                'text' => getResult('CS', $text)
             ));
         }else {
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
                 'parse_mode' => 'HTML',
-                'text' => 'Desculpe, mas só compreendo mensagens em texto'
+                'text' => 'Desculpe, não entendi o comando, tente novamente!'
         ));
         }
     }
