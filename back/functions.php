@@ -80,13 +80,10 @@ function sendMessage($method, $parameters) {
 
 function getResult($rel, $title){
 
-        $out = "Resposta - ".$title."\r\n";
+        $out = $title."\r\n";
         
         if($rel=="CS"){
-            $out .= "
-            ================ 
-            Digite a matrícula:
-            ==================";
+            $out .= " = Digite a matrícula: =";
         }else if($rel=="CS.MAT"){
             $out .= "O funcionário XXX, de matrícula xxx.xxx.xxx\r\n
             ainda tem XX Litros de abastecimento";
