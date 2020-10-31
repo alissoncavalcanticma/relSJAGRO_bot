@@ -21,7 +21,7 @@ function processMessage($message) {
                         'keyboard' => array(
                             array(
                                 'ABASTECER',
-                                'CONSULffffTAR'
+                                'CONSULTAR'
                             )/*,
                             array(
                                 '3. Opção 3',
