@@ -5,6 +5,7 @@ function processMessage($message) {
         // processa a mensagem recebida
         $message_id = $message['message_id'];
         $chat_id = $message['chat']['id'];
+        $action = $message['action'];
         
         if (isset($message['text'])) {
         
@@ -44,7 +45,8 @@ function processMessage($message) {
                 sendMessage("sendMessage", array(
                     'chat_id' => $chat_id,
                     'parse_mode' => 'HTML',
-                    'text' => getResult('CS', $text)
+                    'text' => getResult('CS', $text),
+                    'action' => 'cs'
                 ));
         }else if ($message[''] === "CONSULTAR") {
             sendMessage("sendMessage", array(
@@ -83,7 +85,8 @@ function getResult($rel, $title){
         $out = $title."\r\n";
         
         if($rel=="CS"){
-            $out .= " = Digite a matrícula: =";
+            $out .= " = Texto: =".$title.$message['action'];
+            //$out .= " = Digite a matrícula: =".$message['text'];
         }else if($rel=="CS.MAT"){
             $out .= "O funcionário XXX, de matrícula xxx.xxx.xxx\r\n
             ainda tem XX Litros de abastecimento";
