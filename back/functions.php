@@ -46,7 +46,24 @@ function processMessage($message) {
                     'parse_mode' => 'HTML',
                     'text' => getResult('CS', $text)
                 ));
-        }else if ($text === "CONSULTAR") {
+
+                $update_response = file_get_contents("php://input");
+                $update = json_decode($update_response, true);
+
+                if (isset($update["message"])) {
+
+                    processMessage($update["message"]);
+
+                }
+
+                sendMessage("sendMessage", array(
+                    'chat_id' => $chat_id,
+                    'parse_mode' => 'HTML',
+                    'text' => getResult('CS.MAT', $text)
+                ));
+                
+
+        }else if ($message[''] === "CONSULTAR") {
             sendMessage("sendMessage", array(
                 'chat_id' => $chat_id,
                 'parse_mode' => 'HTML',
